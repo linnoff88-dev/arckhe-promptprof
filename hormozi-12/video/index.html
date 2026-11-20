@@ -1,0 +1,512 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      @font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:block;src:url('assets/fonts/Inter-400.woff2') format('woff2');}
+@font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:block;src:url('assets/fonts/Inter-500.woff2') format('woff2');}
+@font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:block;src:url('assets/fonts/Inter-600.woff2') format('woff2');}
+@font-face{font-family:'Inter';font-style:normal;font-weight:700;font-display:block;src:url('assets/fonts/Inter-700.woff2') format('woff2');}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:400;font-display:block;src:url('assets/fonts/JetBrainsMono-400.woff2') format('woff2');}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:600;font-display:block;src:url('assets/fonts/JetBrainsMono-600.woff2') format('woff2');}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:700;font-display:block;src:url('assets/fonts/JetBrainsMono-700.woff2') format('woff2');}
+@font-face{font-family:'Sora';font-style:normal;font-weight:700;font-display:block;src:url('assets/fonts/Sora-700.woff2') format('woff2');}
+@font-face{font-family:'Sora';font-style:normal;font-weight:800;font-display:block;src:url('assets/fonts/Sora-800.woff2') format('woff2');}
+
+      :root{
+        --bg:#0D1321; --bg2:#1D2D44; --bg3:#3E5C76;
+        --fg:#F0EBD8; --muted:#748CAB; --accent:#FFC300; --accent2:#FCA311; --code:#2EC4B6;
+      }
+      *{margin:0;padding:0;box-sizing:border-box}
+      html,body{width:1080px;height:1920px;overflow:hidden;background:var(--bg);color:var(--fg);
+        font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+      .mono{font-family:"JetBrains Mono",ui-monospace,monospace}
+      #root{position:relative;width:1080px;height:1920px;overflow:hidden}
+
+      /* ---- background persistente ---- */
+      .bg-layer{position:absolute;inset:0;z-index:0;pointer-events:none}
+      #glow{position:absolute;top:-260px;left:-180px;width:1100px;height:1100px;border-radius:50%;
+        background:radial-gradient(circle,rgba(255,195,0,.20),rgba(255,195,0,0) 62%);filter:blur(8px)}
+      #glow2{position:absolute;bottom:-360px;right:-240px;width:1200px;height:1200px;border-radius:50%;
+        background:radial-gradient(circle,rgba(46,196,182,.10),rgba(46,196,182,0) 62%)}
+      #grid{position:absolute;inset:-2px;opacity:.5;
+        background-image:linear-gradient(rgba(116,140,171,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(116,140,171,.07) 1px,transparent 1px);
+        background-size:64px 64px}
+      .ghost{position:absolute;font-family:Sora,sans-serif;font-weight:800;color:rgba(255,195,0,.04);
+        font-size:520px;line-height:.8;letter-spacing:-.03em;top:240px;left:-40px;white-space:nowrap;user-select:none}
+      #grain{position:absolute;inset:0;opacity:.05;mix-blend-mode:overlay;
+        background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+      #progress{position:absolute;left:0;bottom:0;height:6px;width:100%;transform:scaleX(0);transform-origin:left center;
+        background:linear-gradient(90deg,var(--accent),var(--accent2));z-index:40;box-shadow:0 0 18px rgba(255,195,0,.5)}
+
+      /* ---- cena base ---- */
+      .scene{position:absolute;inset:0;z-index:10;display:flex;flex-direction:column;justify-content:center;
+        padding:120px 150px 150px}
+      .scene-inner{position:relative;z-index:2;width:100%;height:100%;display:flex;flex-direction:column;justify-content:center}
+      .accent{color:var(--accent)}.accent2{color:var(--accent2)}.dim{color:var(--muted)}
+
+      /* ---- fundo cinematográfico ilustrativo (todas as cenas) ---- */
+      .scene-bg{position:absolute;inset:0;z-index:0;overflow:hidden}
+      .scene-bgimg{position:absolute;inset:-7%;width:114%;height:114%;object-fit:cover;
+        filter:blur(5px) saturate(1.06) brightness(.92);will-change:transform}
+      .scene-bg-ov{position:absolute;inset:0;
+        background:linear-gradient(180deg,rgba(13,19,33,.34) 0%,rgba(13,19,33,.20) 30%,rgba(13,19,33,.68) 66%,rgba(13,19,33,.95) 100%)}
+      .scene.has-bg .ltitle,.scene.has-bg .title,.scene.has-bg .cta-brand{text-shadow:0 3px 22px rgba(0,0,0,.75)}
+      .scene.has-bg .lsub,.scene.has-bg .subhead{color:#E0E7F2;text-shadow:0 2px 16px rgba(0,0,0,.9)}
+      .scene.has-bg .lcount{text-shadow:0 2px 10px rgba(0,0,0,.8)}
+
+      /* lição com fundo: texto ancorado embaixo, imagem respira no topo */
+      .scene.lesson .scene-inner{justify-content:flex-end;padding-bottom:24px}
+      .scene.lesson .lnum{font-size:150px;margin-bottom:4px}
+      .scene.lesson .lwrap{height:auto;flex:none}
+
+      /* HOOK (cena 1) */
+      .eyebrow{display:inline-flex;align-items:center;gap:14px;font-family:"JetBrains Mono",monospace;
+        font-size:26px;letter-spacing:.3em;color:var(--muted);font-weight:600}
+      .eyebrow .dot{width:14px;height:14px;border-radius:50%;background:var(--accent);box-shadow:0 0 16px var(--accent)}
+      .title{font-family:Sora,sans-serif;font-weight:800;font-size:184px;line-height:.92;letter-spacing:-.03em;margin:24px 0}
+      .title .word{display:block}
+      .rule{height:7px;width:520px;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:6px;margin:10px 0 30px}
+      .rule.center{margin:34px auto}
+      .subhead{font-size:42px;color:var(--muted)}
+      .cursor{display:inline-block;width:18px;height:40px;background:var(--accent);margin-left:10px;vertical-align:-6px;border-radius:2px}
+      .reg{position:absolute;width:48px;height:48px;border:3px solid var(--bg3)}
+      .reg.tl{top:0;left:0;border-right:none;border-bottom:none}
+      .reg.br{bottom:0;right:0;border-left:none;border-top:none}
+
+      /* LIÇÃO (cenas 2..13) */
+      .lcount{position:absolute;top:0;right:0;font-size:30px;letter-spacing:.12em;color:var(--accent);font-weight:700}
+      .lwrap{display:flex;flex-direction:column;justify-content:center;height:100%}
+      .lnum{font-family:Sora,sans-serif;font-weight:800;font-size:300px;line-height:.8;letter-spacing:-.04em;
+        color:var(--accent);text-shadow:0 0 60px rgba(255,195,0,.25);margin-bottom:10px}
+      .ltitle{font-family:Sora,sans-serif;font-weight:800;font-size:104px;line-height:1.0;letter-spacing:-.02em;color:var(--fg)}
+      .lrule{height:7px;width:200px;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:6px;margin:30px 0 28px}
+      .lsub{font-size:46px;color:var(--muted);max-width:90%;line-height:1.25}
+
+      /* CTA (cena 14) */
+      .cta-eyebrow{text-align:center;font-family:"JetBrains Mono",monospace;font-size:26px;letter-spacing:.36em;
+        color:var(--muted);text-transform:uppercase;margin-bottom:30px}
+      .cta-brand{text-align:center;font-family:Sora;font-weight:800;font-size:150px;line-height:.95;letter-spacing:-.02em}
+      .cta-brand .b1{color:var(--fg)}.cta-brand .b2{color:var(--accent)}.cta-brand .bdotsep{color:var(--accent)}
+      .cta-url{display:flex;align-items:center;justify-content:center;gap:16px;font-size:46px;color:var(--muted);margin-top:32px}
+      .cta-globe{font-size:38px;filter:grayscale(.2)}
+
+      /* caption */
+      .caption{position:absolute;left:50%;transform:translateX(-50%);bottom:64px;z-index:30;
+        max-width:1500px;text-align:center;font-size:36px;font-weight:600;color:var(--fg);
+        background:rgba(10,18,30,.72);border:1px solid var(--bg3);border-radius:14px;padding:18px 40px;
+        backdrop-filter:blur(6px);text-shadow:0 2px 10px rgba(0,0,0,.6)}
+
+      /* =================== OVERRIDES 9:16 (Shorts) =================== */
+      body.v .scene{padding:200px 90px 280px}
+      body.v .eyebrow{font-size:24px}
+      body.v .title{font-size:150px;margin:22px 0}
+      body.v .rule{width:380px;margin-bottom:26px}
+      body.v .subhead{font-size:40px}
+      body.v .lcount{font-size:32px}
+      body.v .lnum{font-size:330px}
+      body.v .scene.lesson .lnum{font-size:172px}
+      body.v .ltitle{font-size:96px}
+      body.v .lrule{width:200px;margin:32px 0 30px}
+      body.v .lsub{font-size:48px;max-width:100%}
+      body.v .cta-brand{font-size:122px}
+      body.v .cta-url{font-size:44px}
+      body.v .caption{bottom:160px;max-width:920px;font-size:36px;padding:18px 34px}
+      body.v #glow{top:-200px;left:-160px;width:900px;height:900px}
+      body.v #glow2{bottom:-300px;right:-200px;width:1000px;height:1000px}
+      body.v .ghost{font-size:420px;top:560px}
+    </style>
+  </head>
+  <body class="v">
+    <div id="root" data-composition-id="main" data-start="0" data-duration="58.688" data-width="1080" data-height="1920">
+      <div class="bg-layer" data-layout-ignore>
+        <div id="glow"></div><div id="glow2"></div><div id="grid"></div>
+        <div class="ghost" id="ghost" data-layout-ignore>$$$</div><div id="grain"></div>
+      </div>
+
+    <section id="s1" class="scene clip has-bg" data-start="0" data-duration="4.597" data-track-index="1">
+      <div class="scene-bg" id="s1-bg" data-layout-ignore><img class="scene-bgimg" id="s1-bgimg" src="assets/img/s1.png"/><div class="scene-bg-ov"></div></div><div class="scene-inner" id="scene-inner-1">
+    <div class="eyebrow" id="s1-eyebrow"><span class="dot"></span>ALEX HORMOZI · 12 LIÇÕES</div>
+    <h1 class="title">
+      <span class="word" id="s1-w1">13 anos</span>
+      <span class="word accent" id="s1-w2">em 47s</span>
+    </h1>
+    <div class="rule" id="s1-rule"></div>
+    <p class="subhead" id="s1-sub">12 lições que dão dinheiro<span class="cursor" id="s1-cur"></span></p>
+    <div class="reg tl" id="s1-r1"></div><div class="reg br" id="s1-r2"></div></div>
+    </section>
+    <section id="s2" class="scene clip has-bg lesson" data-start="4.597" data-duration="4.704" data-track-index="3">
+      <div class="scene-bg" id="s2-bg" data-layout-ignore><img class="scene-bgimg" id="s2-bgimg" src="assets/img/s2.png"/><div class="scene-bg-ov"></div></div><div class="scene-inner" id="scene-inner-2">
+    <div class="lcount mono" id="s2-count">01 <span class="dim">/ 12</span></div>
+    <div class="lwrap">
+      <div class="lnum" id="s2-num">01</div>
+      <h2 class="ltitle" id="s2-title">Oferta âncora</h2>
+      <div class="lrule" id="s2-rule"></div>
+      <p class="lsub" id="s2-sub">Um preço absurdo faz o resto parecer barato.</p>
+    </div></div>
+    </section>
+    <section id="s3" class="scene clip has-bg lesson" data-start="9.301" data-duration="4.896" data-track-index="1">
+      <div class="scene-bg" id="s3-bg" data-layout-ignore><img class="scene-bgimg" id="s3-bgimg" src="assets/img/s3.png"/><div class="scene-bg-ov"></div></div><div class="scene-inner" id="scene-inner-3">
+    <div class="lcount mono" id="s3-count">02 <span class="dim">/ 12</span></div>
+    <div class="lwrap">
+      <div class="lnum" id="s3-num">02</div>
+      <h2 class="ltitle" id="s3-title">Anuncie mais</h2>
+      <div class="lrule" id="s3-rule"></div>
+      <p class="lsub" id="s3-sub">Ninguém sabe que você existe.</p>
+    </div></div>
+    </section>
+    <section id="s4" class="scene clip has-bg lesson" data-start="14.197" data-duration="4.832" data-track-index="3">
+      <div class="scene-bg" id="s4-bg" data-layout-ignore><img class="scene-bgimg" id="s4-bgimg" src="assets/img/s4.png"/><div class="scene-bg-ov"></div></div><div class="scene-inner" id="scene-inner-4">
+    <div class="lcount mono" id="s4-count">03 <span class="dim">/ 12</span></div>
+    <div class="lwrap">
+      <div class="lnum" id="s4-num">03</div>
+      <h2 class="ltitle" id="s4-title">Comece de graça</h2>
+      <div class="lrule" id="s4-rule"></div>
+      <p class="lsub" id="s4-sub">Derrube a barreira de entrada.</p>
+    </div></div>
+    </section>
+    <section id="s5" class="scene clip has-bg lesson" data-start="19.029" data-duration="4.619" data-track-index="1">
+      <div class="scene-bg" id="s5-bg" data-layout-ignore><img class="scene-bgimg" id="s5-bgimg" src="assets/img/s5.png"/><div class="scene-bg-ov"></div></div><div class="scene-inner" id="scene-inner-5">
+    <div class="lcount mono" id="s5-count">04 <span class="dim">/ 12</span></div>
+    <div class="lwrap">
+      <div class="lnum" id="s5-num">04</div>
+      <h2 class="ltitle" id="s5-title">Prova &gt; promessa</h2>
+      <div class="lrule" id="s5-rule"></div>
+      <p class="lsub" id="s5-sub">Mostre resultado, não copy bonita.</p>
+    </div></div>
+    </section>
+    <section id="s6" class="scene clip has-bg lesson" data-start="23.648" data-duration="3.957" data-track-index="3">
+      <div class="scene-bg" id="s6-bg" data-layout-ignore><img class="scene-bgimg" id="s6-bgimg" src="assets/img/s6.png"/><div class="scene-bg-ov"></div></div><div class="scene-inner" id="scene-inner-6">
+    <div class="lcount mono" id="s6-count">05 <span class="dim">/ 12</span></div>
+    <div class="lwrap">
+      <div class="lnum" id="s6-num">05</div>
+      <h2 class="ltitle" id="s6-title">Suba os preços</h2>
+      <div class="lrule" id="s6-rule"></div>
+      <p class="lsub" id="s6-sub">Cada “sim” passa a valer mais.</p>
+    </div></div>
+    </section>
+    <section id="s7" class="scene clip has-bg lesson" data-start="27.605" data-duration="3.019" data-track-index="1">
+      <div class="scene-bg" id="s7-bg" data-layout-ignore><img class="scene-bgimg" id="s7-bgimg" src="assets/img/s7.png"/><div class="scene-bg-ov"></div></div><div class="scene-inner" id="scene-inner-7">
+    <div class="lcount mono" id="s7-count">06 <span class="dim">/ 12</span></div>
+    <div class="lwrap">
+      <div class="lnum" id="s7-num">06</div>
+      <h2 class="ltitle" id="s7-title">Vendas + Marketing</h2>
+      <div class="lrule" id="s7-rule"></div>
+      <p class="lsub" id="s7-sub">Um funil só, sem vazar dinheiro.</p>
+    </div></div>
+    </section>
+    <section id="s8" class="scene clip has-bg lesson" data-start="30.624" data-duration="4.555" data-track-index="3">
+      <div class="scene-bg" id="s8-bg" data-layout-ignore><img class="scene-bgimg" id="s8-bgimg" src="assets/img/s8.png"/><div class="scene-bg-ov"></div></div><div class="scene-inner" id="scene-inner-8">
+    <div class="lcount mono" id="s8-count">07 <span class="dim">/ 12</span></div>
+    <div class="lwrap">
+      <div class="lnum" id="s8-num">07</div>
+      <h2 class="ltitle" id="s8-title">Fale com clientes</h2>
+      <div class="lrule" id="s8-rule"></div>
+      <p class="lsub" id="s8-sub">Eles já te dizem o que querem comprar.</p>
+    </div></div>
+    </section>
+    <section id="s9" class="scene clip has-bg lesson" data-start="35.179" data-duration="3.936" data-track-index="1">
+      <div class="scene-bg" id="s9-bg" data-layout-ignore><img class="scene-bgimg" id="s9-bgimg" src="assets/img/s9.png"/><div class="scene-bg-ov"></div></div><div class="scene-inner" id="scene-inner-9">
+    <div class="lcount mono" id="s9-count">08 <span class="dim">/ 12</span></div>
+    <div class="lwrap">
+      <div class="lnum" id="s9-num">08</div>
+      <h2 class="ltitle" id="s9-title">Só marketing</h2>
+      <div class="lrule" id="s9-rule"></div>
+      <p class="lsub" id="s9-sub">Até R$500 mil/mês: foque em vender.</p>
+    </div></div>
+    </section>
+    <section id="s10" class="scene clip has-bg lesson" data-start="39.115" data-duration="3.211" data-track-index="3">
+      <div class="scene-bg" id="s10-bg" data-layout-ignore><img class="scene-bgimg" id="s10-bgimg" src="assets/img/s10.png"/><div class="scene-bg-ov"></div></div><div class="scene-inner" id="scene-inner-10">
+    <div class="lcount mono" id="s10-count">09 <span class="dim">/ 12</span></div>
+    <div class="lwrap">
+      <div class="lnum" id="s10-num">09</div>
+      <h2 class="ltitle" id="s10-title">10× no que funciona</h2>
+      <div class="lrule" id="s10-rule"></div>
+      <p class="lsub" id="s10-sub">Mais verba no que já dá resultado.</p>
+    </div></div>
+    </section>
+    <section id="s11" class="scene clip has-bg lesson" data-start="42.325" data-duration="3.616" data-track-index="1">
+      <div class="scene-bg" id="s11-bg" data-layout-ignore><img class="scene-bgimg" id="s11-bgimg" src="assets/img/s11.png"/><div class="scene-bg-ov"></div></div><div class="scene-inner" id="scene-inner-11">
+    <div class="lcount mono" id="s11-count">10 <span class="dim">/ 12</span></div>
+    <div class="lwrap">
+      <div class="lnum" id="s11-num">10</div>
+      <h2 class="ltitle" id="s11-title">Foco radical</h2>
+      <div class="lrule" id="s11-rule"></div>
+      <p class="lsub" id="s11-sub">Um canal, um avatar, um produto.</p>
+    </div></div>
+    </section>
+    <section id="s12" class="scene clip has-bg lesson" data-start="45.941" data-duration="4.235" data-track-index="3">
+      <div class="scene-bg" id="s12-bg" data-layout-ignore><img class="scene-bgimg" id="s12-bgimg" src="assets/img/s12.png"/><div class="scene-bg-ov"></div></div><div class="scene-inner" id="scene-inner-12">
+    <div class="lcount mono" id="s12-count">11 <span class="dim">/ 12</span></div>
+    <div class="lwrap">
+      <div class="lnum" id="s12-num">11</div>
+      <h2 class="ltitle" id="s12-title">Enfrente o difícil</h2>
+      <div class="lrule" id="s12-rule"></div>
+      <p class="lsub" id="s12-sub">O crescimento mora no desconforto.</p>
+    </div></div>
+    </section>
+    <section id="s13" class="scene clip has-bg lesson" data-start="50.176" data-duration="4.32" data-track-index="1">
+      <div class="scene-bg" id="s13-bg" data-layout-ignore><img class="scene-bgimg" id="s13-bgimg" src="assets/img/s13.png"/><div class="scene-bg-ov"></div></div><div class="scene-inner" id="scene-inner-13">
+    <div class="lcount mono" id="s13-count">12 <span class="dim">/ 12</span></div>
+    <div class="lwrap">
+      <div class="lnum" id="s13-num">12</div>
+      <h2 class="ltitle" id="s13-title">Lembrar &gt; ensinar</h2>
+      <div class="lrule" id="s13-rule"></div>
+      <p class="lsub" id="s13-sub">Revise toda semana até virar hábito.</p>
+    </div></div>
+    </section>
+    <section id="s14" class="scene clip has-bg" data-start="54.496" data-duration="4.192" data-track-index="3">
+      <div class="scene-bg" id="s14-bg" data-layout-ignore><img class="scene-bgimg" id="s14-bgimg" src="assets/img/s14.png"/><div class="scene-bg-ov"></div></div><div class="scene-inner" id="scene-inner-14">
+    <div class="cta-eyebrow" id="s14-eye">CONTINUA EM</div>
+    <div class="cta-brand" id="s14-brand"><span class="b1">INEMA</span><span class="bdotsep">.</span><span class="b2">CLUB</span></div>
+    <div class="rule center" id="s14-rule"></div>
+    <div class="cta-url mono" id="s14-url"><span class="cta-globe">🌐</span>inema.club</div>
+    <div class="reg tl" id="s14-r1"></div><div class="reg br" id="s14-r2"></div></div>
+    </section>
+
+    <div class="caption clip" id="cap-1" data-start="0" data-duration="4.597" data-track-index="2">13 anos de negócios em 47 segundos</div>
+    <div class="caption clip" id="cap-2" data-start="4.597" data-duration="4.704" data-track-index="4">Oferta âncora — ancore o preço</div>
+    <div class="caption clip" id="cap-3" data-start="9.301" data-duration="4.896" data-track-index="2">Anuncie mais — te falta alcance, não produto</div>
+    <div class="caption clip" id="cap-4" data-start="14.197" data-duration="4.832" data-track-index="4">Comece de graça — tire o atrito</div>
+    <div class="caption clip" id="cap-5" data-start="19.029" data-duration="4.619" data-track-index="2">Prova vence promessa</div>
+    <div class="caption clip" id="cap-6" data-start="23.648" data-duration="3.957" data-track-index="4">Suba os preços — menos sins, melhores clientes</div>
+    <div class="caption clip" id="cap-7" data-start="27.605" data-duration="3.019" data-track-index="2">Vendas + Marketing = um funil só</div>
+    <div class="caption clip" id="cap-8" data-start="30.624" data-duration="4.555" data-track-index="4">Fale com seus clientes</div>
+    <div class="caption clip" id="cap-9" data-start="35.179" data-duration="3.936" data-track-index="2">Até R$500 mil/mês: só venda</div>
+    <div class="caption clip" id="cap-10" data-start="39.115" data-duration="3.211" data-track-index="4">10× no que já funciona</div>
+    <div class="caption clip" id="cap-11" data-start="42.325" data-duration="3.616" data-track-index="2">Foco radical: 1 canal, 1 avatar, 1 produto</div>
+    <div class="caption clip" id="cap-12" data-start="45.941" data-duration="4.235" data-track-index="4">Enfrente o difícil</div>
+    <div class="caption clip" id="cap-13" data-start="50.176" data-duration="4.32" data-track-index="2">Lembrar > ensinar — revise toda semana</div>
+    <div class="caption clip" id="cap-14" data-start="54.496" data-duration="4.192" data-track-index="4">Continua em inema.club</div>
+      <div id="progress"></div>
+
+    <audio id="a1" data-start="0.18" data-duration="4.117" data-track-index="20" src="assets/audio/s1.wav"></audio>
+    <audio id="a2" data-start="4.777" data-duration="4.224" data-track-index="20" src="assets/audio/s2.wav"></audio>
+    <audio id="a3" data-start="9.481" data-duration="4.416" data-track-index="20" src="assets/audio/s3.wav"></audio>
+    <audio id="a4" data-start="14.377" data-duration="4.352" data-track-index="20" src="assets/audio/s4.wav"></audio>
+    <audio id="a5" data-start="19.209" data-duration="4.139" data-track-index="20" src="assets/audio/s5.wav"></audio>
+    <audio id="a6" data-start="23.828" data-duration="3.477" data-track-index="20" src="assets/audio/s6.wav"></audio>
+    <audio id="a7" data-start="27.785" data-duration="2.539" data-track-index="20" src="assets/audio/s7.wav"></audio>
+    <audio id="a8" data-start="30.804" data-duration="4.075" data-track-index="20" src="assets/audio/s8.wav"></audio>
+    <audio id="a9" data-start="35.359" data-duration="3.456" data-track-index="20" src="assets/audio/s9.wav"></audio>
+    <audio id="a10" data-start="39.295" data-duration="2.731" data-track-index="20" src="assets/audio/s10.wav"></audio>
+    <audio id="a11" data-start="42.505" data-duration="3.136" data-track-index="20" src="assets/audio/s11.wav"></audio>
+    <audio id="a12" data-start="46.121" data-duration="3.755" data-track-index="20" src="assets/audio/s12.wav"></audio>
+    <audio id="a13" data-start="50.356" data-duration="3.84" data-track-index="20" src="assets/audio/s13.wav"></audio>
+    <audio id="a14" data-start="54.676" data-duration="3.712" data-track-index="20" src="assets/audio/s14.wav"></audio>
+      <script>
+        window.__timelines = window.__timelines || {};
+        const tl = gsap.timeline({ paused: true });
+        const TOTAL = 58.688;
+        tl.to("#glow",{scale:1.22,opacity:.55,duration:4.5,yoyo:true,repeat:Math.ceil(TOTAL/4.5)+1,ease:"sine.inOut"},0);
+        tl.to("#glow2",{scale:1.18,duration:6,yoyo:true,repeat:Math.ceil(TOTAL/6)+1,ease:"sine.inOut"},0);
+        tl.to("#ghost",{x:120,duration:TOTAL,ease:"none"},0);
+        tl.to("#grid",{backgroundPositionX:"+=128",backgroundPositionY:"+=128",duration:18,repeat:Math.ceil(TOTAL/18)+1,ease:"none"},0);
+        tl.fromTo("#progress",{scaleX:0},{scaleX:1,duration:TOTAL,ease:"none"},0);
+      tl.fromTo("#scene-inner-1",{opacity:0},{opacity:1,duration:0.28,ease:"power2.out"},0);
+      tl.to("#scene-inner-1",{opacity:0,duration:0.28,ease:"power2.in"},4.317);
+      tl.set("#scene-inner-1",{opacity:0},4.597);
+      tl.fromTo("#s1-bg",{opacity:0},{opacity:1,duration:0.28,ease:"power2.out"},0);
+      tl.to("#s1-bg",{opacity:0,duration:0.28,ease:"power2.in"},4.317);
+      tl.set("#s1-bg",{opacity:0},4.597);
+      tl.fromTo("#s1-bgimg",{"scale":1.06},{"scale":1.18,"duration":4.597,"ease":"sine.inOut","transformOrigin":"50% 50%"},0);
+      tl.from("#s1-eyebrow",{y:-24,opacity:0,duration:.45,ease:"power3.out"},0.05);
+      tl.from("#s1-w1",{y:80,opacity:0,duration:.55,ease:"power4.out"},0.2);
+      tl.from("#s1-w2",{y:80,opacity:0,duration:.55,ease:"power4.out"},0.38);
+      tl.fromTo("#s1-rule",{scaleX:0},{scaleX:1,duration:.55,ease:"expo.out",transformOrigin:"left center"},0.7);
+      tl.from("#s1-sub",{y:18,opacity:0,duration:.45,ease:"power2.out"},0.85);
+      tl.fromTo("#s1-cur",{opacity:1},{opacity:0,duration:.5,repeat:8,yoyo:true,ease:"none"},1.2);
+      tl.from(["#s1-r1","#s1-r2"],{opacity:0,scale:.5,duration:.5,stagger:.1,ease:"back.out(2)"},0.4);
+      tl.fromTo("#cap-1",{opacity:0,y:14},{opacity:1,y:0,duration:.4,ease:"power2.out"},0.2);
+      tl.to("#cap-1",{opacity:0,duration:.3,ease:"power2.in"},4.197);
+      tl.fromTo("#scene-inner-2",{opacity:0},{opacity:1,duration:0.28,ease:"power2.out"},4.597);
+      tl.to("#scene-inner-2",{opacity:0,duration:0.28,ease:"power2.in"},9.021);
+      tl.set("#scene-inner-2",{opacity:0},9.301);
+      tl.fromTo("#s2-bg",{opacity:0},{opacity:1,duration:0.28,ease:"power2.out"},4.597);
+      tl.to("#s2-bg",{opacity:0,duration:0.28,ease:"power2.in"},9.021);
+      tl.set("#s2-bg",{opacity:0},9.301);
+      tl.fromTo("#s2-bgimg",{"scale":1.08,"xPercent":-3},{"scale":1.14,"xPercent":3,"duration":4.704,"ease":"sine.inOut","transformOrigin":"50% 50%"},4.597);
+      tl.from("#s2-count",{y:-14,opacity:0,duration:.35,ease:"power2.out"},4.617);
+      tl.from("#s2-num",{scale:.4,opacity:0,rotate:-8,duration:.5,ease:"back.out(2)"},4.657);
+      tl.from("#s2-title",{y:42,opacity:0,duration:.45,ease:"power3.out"},4.857);
+      tl.fromTo("#s2-rule",{scaleX:0},{scaleX:1,duration:.4,ease:"expo.out",transformOrigin:"left center"},5.017);
+      tl.from("#s2-sub",{y:18,opacity:0,duration:.4,ease:"power2.out"},5.117);
+      tl.fromTo("#cap-2",{opacity:0,y:14},{opacity:1,y:0,duration:.4,ease:"power2.out"},4.797);
+      tl.to("#cap-2",{opacity:0,duration:.3,ease:"power2.in"},8.901);
+      tl.fromTo("#scene-inner-3",{opacity:0},{opacity:1,duration:0.28,ease:"power2.out"},9.301);
+      tl.to("#scene-inner-3",{opacity:0,duration:0.28,ease:"power2.in"},13.917);
+      tl.set("#scene-inner-3",{opacity:0},14.197);
+      tl.fromTo("#s3-bg",{opacity:0},{opacity:1,duration:0.28,ease:"power2.out"},9.301);
+      tl.to("#s3-bg",{opacity:0,duration:0.28,ease:"power2.in"},13.917);
+      tl.set("#s3-bg",{opacity:0},14.197);
+      tl.fromTo("#s3-bgimg",{"scale":1.12,"yPercent":4},{"scale":1.15,"yPercent":-4,"duration":4.896,"ease":"sine.inOut","transformOrigin":"50% 50%"},9.301);
+      tl.from("#s3-count",{y:-14,opacity:0,duration:.35,ease:"power2.out"},9.321);
+      tl.from("#s3-num",{scale:.4,opacity:0,rotate:-8,duration:.5,ease:"back.out(2)"},9.361);
+      tl.from("#s3-title",{y:42,opacity:0,duration:.45,ease:"power3.out"},9.561);
+      tl.fromTo("#s3-rule",{scaleX:0},{scaleX:1,duration:.4,ease:"expo.out",transformOrigin:"left center"},9.721);
+      tl.from("#s3-sub",{y:18,opacity:0,duration:.4,ease:"power2.out"},9.821);
+      tl.fromTo("#cap-3",{opacity:0,y:14},{opacity:1,y:0,duration:.4,ease:"power2.out"},9.501);
+      tl.to("#cap-3",{opacity:0,duration:.3,ease:"power2.in"},13.797);
+      tl.fromTo("#scene-inner-4",{opacity:0},{opacity:1,duration:0.28,ease:"power2.out"},14.197);
+      tl.to("#scene-inner-4",{opacity:0,duration:0.28,ease:"power2.in"},18.749);
+      tl.set("#scene-inner-4",{opacity:0},19.029);
+      tl.fromTo("#s4-bg",{opacity:0},{opacity:1,duration:0.28,ease:"power2.out"},14.197);
+      tl.to("#s4-bg",{opacity:0,duration:0.28,ease:"power2.in"},18.749);
+      tl.set("#s4-bg",{opacity:0},19.029);
+      tl.fromTo("#s4-bgimg",{"scale":1.05},{"scale":1.18,"duration":4.832,"ease":"sine.inOut","transformOrigin":"50% 50%"},14.197);
+      tl.from("#s4-count",{y:-14,opacity:0,duration:.35,ease:"power2.out"},14.217);
+      tl.from("#s4-num",{scale:.4,opacity:0,rotate:-8,duration:.5,ease:"back.out(2)"},14.257);
+      tl.from("#s4-title",{y:42,opacity:0,duration:.45,ease:"power3.out"},14.457);
+      tl.fromTo("#s4-rule",{scaleX:0},{scaleX:1,duration:.4,ease:"expo.out",transformOrigin:"left center"},14.617);
+      tl.from("#s4-sub",{y:18,opacity:0,duration:.4,ease:"power2.out"},14.717);
+      tl.fromTo("#cap-4",{opacity:0,y:14},{opacity:1,y:0,duration:.4,ease:"power2.out"},14.397);
+      tl.to("#cap-4",{opacity:0,duration:.3,ease:"power2.in"},18.629);
+      tl.fromTo("#scene-inner-5",{opacity:0},{opacity:1,duration:0.28,ease:"power2.out"},19.029);
+      tl.to("#scene-inner-5",{opacity:0,duration:0.28,ease:"power2.in"},23.368);
+      tl.set("#scene-inner-5",{opacity:0},23.648);
+      tl.fromTo("#s5-bg",{opacity:0},{opacity:1,duration:0.28,ease:"power2.out"},19.029);
+      tl.to("#s5-bg",{opacity:0,duration:0.28,ease:"power2.in"},23.368);
+      tl.set("#s5-bg",{opacity:0},23.648);
+      tl.fromTo("#s5-bgimg",{"scale":1.1,"yPercent":4},{"scale":1.15,"yPercent":-4,"duration":4.619,"ease":"sine.inOut","transformOrigin":"50% 50%"},19.029);
+      tl.from("#s5-count",{y:-14,opacity:0,duration:.35,ease:"power2.out"},19.049);
+      tl.from("#s5-num",{scale:.4,opacity:0,rotate:-8,duration:.5,ease:"back.out(2)"},19.089);
+      tl.from("#s5-title",{y:42,opacity:0,duration:.45,ease:"power3.out"},19.289);
+      tl.fromTo("#s5-rule",{scaleX:0},{scaleX:1,duration:.4,ease:"expo.out",transformOrigin:"left center"},19.449);
+      tl.from("#s5-sub",{y:18,opacity:0,duration:.4,ease:"power2.out"},19.549);
+      tl.fromTo("#cap-5",{opacity:0,y:14},{opacity:1,y:0,duration:.4,ease:"power2.out"},19.229);
+      tl.to("#cap-5",{opacity:0,duration:.3,ease:"power2.in"},23.248);
+      tl.fromTo("#scene-inner-6",{opacity:0},{opacity:1,duration:0.28,ease:"power2.out"},23.648);
+      tl.to("#scene-inner-6",{opacity:0,duration:0.28,ease:"power2.in"},27.325);
+      tl.set("#scene-inner-6",{opacity:0},27.605);
+      tl.fromTo("#s6-bg",{opacity:0},{opacity:1,duration:0.28,ease:"power2.out"},23.648);
+      tl.to("#s6-bg",{opacity:0,duration:0.28,ease:"power2.in"},27.325);
+      tl.set("#s6-bg",{opacity:0},27.605);
+      tl.fromTo("#s6-bgimg",{"scale":1.06},{"scale":1.18,"duration":3.957,"ease":"power1.out","transformOrigin":"50% 50%"},23.648);
+      tl.from("#s6-count",{y:-14,opacity:0,duration:.35,ease:"power2.out"},23.668);
+      tl.from("#s6-num",{scale:.4,opacity:0,rotate:-8,duration:.5,ease:"back.out(2)"},23.708);
+      tl.from("#s6-title",{y:42,opacity:0,duration:.45,ease:"power3.out"},23.908);
+      tl.fromTo("#s6-rule",{scaleX:0},{scaleX:1,duration:.4,ease:"expo.out",transformOrigin:"left center"},24.068);
+      tl.from("#s6-sub",{y:18,opacity:0,duration:.4,ease:"power2.out"},24.168);
+      tl.fromTo("#cap-6",{opacity:0,y:14},{opacity:1,y:0,duration:.4,ease:"power2.out"},23.848);
+      tl.to("#cap-6",{opacity:0,duration:.3,ease:"power2.in"},27.205);
+      tl.fromTo("#scene-inner-7",{opacity:0},{opacity:1,duration:0.28,ease:"power2.out"},27.605);
+      tl.to("#scene-inner-7",{opacity:0,duration:0.28,ease:"power2.in"},30.344);
+      tl.set("#scene-inner-7",{opacity:0},30.624);
+      tl.fromTo("#s7-bg",{opacity:0},{opacity:1,duration:0.28,ease:"power2.out"},27.605);
+      tl.to("#s7-bg",{opacity:0,duration:0.28,ease:"power2.in"},30.344);
+      tl.set("#s7-bg",{opacity:0},30.624);
+      tl.fromTo("#s7-bgimg",{"scale":1.08,"xPercent":3},{"scale":1.14,"xPercent":-3,"duration":3.019,"ease":"sine.inOut","transformOrigin":"50% 50%"},27.605);
+      tl.from("#s7-count",{y:-14,opacity:0,duration:.35,ease:"power2.out"},27.625);
+      tl.from("#s7-num",{scale:.4,opacity:0,rotate:-8,duration:.5,ease:"back.out(2)"},27.665);
+      tl.from("#s7-title",{y:42,opacity:0,duration:.45,ease:"power3.out"},27.865);
+      tl.fromTo("#s7-rule",{scaleX:0},{scaleX:1,duration:.4,ease:"expo.out",transformOrigin:"left center"},28.025);
+      tl.from("#s7-sub",{y:18,opacity:0,duration:.4,ease:"power2.out"},28.125);
+      tl.fromTo("#cap-7",{opacity:0,y:14},{opacity:1,y:0,duration:.4,ease:"power2.out"},27.805);
+      tl.to("#cap-7",{opacity:0,duration:.3,ease:"power2.in"},30.224);
+      tl.fromTo("#scene-inner-8",{opacity:0},{opacity:1,duration:0.28,ease:"power2.out"},30.624);
+      tl.to("#scene-inner-8",{opacity:0,duration:0.28,ease:"power2.in"},34.899);
+      tl.set("#scene-inner-8",{opacity:0},35.179);
+      tl.fromTo("#s8-bg",{opacity:0},{opacity:1,duration:0.28,ease:"power2.out"},30.624);
+      tl.to("#s8-bg",{opacity:0,duration:0.28,ease:"power2.in"},34.899);
+      tl.set("#s8-bg",{opacity:0},35.179);
+      tl.fromTo("#s8-bgimg",{"scale":1.08,"xPercent":3},{"scale":1.13,"xPercent":-3,"duration":4.555,"ease":"sine.inOut","transformOrigin":"50% 50%"},30.624);
+      tl.from("#s8-count",{y:-14,opacity:0,duration:.35,ease:"power2.out"},30.644);
+      tl.from("#s8-num",{scale:.4,opacity:0,rotate:-8,duration:.5,ease:"back.out(2)"},30.684);
+      tl.from("#s8-title",{y:42,opacity:0,duration:.45,ease:"power3.out"},30.884);
+      tl.fromTo("#s8-rule",{scaleX:0},{scaleX:1,duration:.4,ease:"expo.out",transformOrigin:"left center"},31.044);
+      tl.from("#s8-sub",{y:18,opacity:0,duration:.4,ease:"power2.out"},31.144);
+      tl.fromTo("#cap-8",{opacity:0,y:14},{opacity:1,y:0,duration:.4,ease:"power2.out"},30.824);
+      tl.to("#cap-8",{opacity:0,duration:.3,ease:"power2.in"},34.779);
+      tl.fromTo("#scene-inner-9",{opacity:0},{opacity:1,duration:0.28,ease:"power2.out"},35.179);
+      tl.to("#scene-inner-9",{opacity:0,duration:0.28,ease:"power2.in"},38.835);
+      tl.set("#scene-inner-9",{opacity:0},39.115);
+      tl.fromTo("#s9-bg",{opacity:0},{opacity:1,duration:0.28,ease:"power2.out"},35.179);
+      tl.to("#s9-bg",{opacity:0,duration:0.28,ease:"power2.in"},38.835);
+      tl.set("#s9-bg",{opacity:0},39.115);
+      tl.fromTo("#s9-bgimg",{"scale":1.1,"yPercent":5},{"scale":1.16,"yPercent":-5,"duration":3.936,"ease":"sine.inOut","transformOrigin":"50% 50%"},35.179);
+      tl.from("#s9-count",{y:-14,opacity:0,duration:.35,ease:"power2.out"},35.199);
+      tl.from("#s9-num",{scale:.4,opacity:0,rotate:-8,duration:.5,ease:"back.out(2)"},35.239);
+      tl.from("#s9-title",{y:42,opacity:0,duration:.45,ease:"power3.out"},35.439);
+      tl.fromTo("#s9-rule",{scaleX:0},{scaleX:1,duration:.4,ease:"expo.out",transformOrigin:"left center"},35.599);
+      tl.from("#s9-sub",{y:18,opacity:0,duration:.4,ease:"power2.out"},35.699);
+      tl.fromTo("#cap-9",{opacity:0,y:14},{opacity:1,y:0,duration:.4,ease:"power2.out"},35.379);
+      tl.to("#cap-9",{opacity:0,duration:.3,ease:"power2.in"},38.715);
+      tl.fromTo("#scene-inner-10",{opacity:0},{opacity:1,duration:0.28,ease:"power2.out"},39.115);
+      tl.to("#scene-inner-10",{opacity:0,duration:0.28,ease:"power2.in"},42.045);
+      tl.set("#scene-inner-10",{opacity:0},42.325);
+      tl.fromTo("#s10-bg",{opacity:0},{opacity:1,duration:0.28,ease:"power2.out"},39.115);
+      tl.to("#s10-bg",{opacity:0,duration:0.28,ease:"power2.in"},42.045);
+      tl.set("#s10-bg",{opacity:0},42.325);
+      tl.fromTo("#s10-bgimg",{"scale":1.06},{"scale":1.18,"duration":3.211,"ease":"sine.inOut","transformOrigin":"50% 50%"},39.115);
+      tl.from("#s10-count",{y:-14,opacity:0,duration:.35,ease:"power2.out"},39.135);
+      tl.from("#s10-num",{scale:.4,opacity:0,rotate:-8,duration:.5,ease:"back.out(2)"},39.175);
+      tl.from("#s10-title",{y:42,opacity:0,duration:.45,ease:"power3.out"},39.375);
+      tl.fromTo("#s10-rule",{scaleX:0},{scaleX:1,duration:.4,ease:"expo.out",transformOrigin:"left center"},39.535);
+      tl.from("#s10-sub",{y:18,opacity:0,duration:.4,ease:"power2.out"},39.635);
+      tl.fromTo("#cap-10",{opacity:0,y:14},{opacity:1,y:0,duration:.4,ease:"power2.out"},39.315);
+      tl.to("#cap-10",{opacity:0,duration:.3,ease:"power2.in"},41.925);
+      tl.fromTo("#scene-inner-11",{opacity:0},{opacity:1,duration:0.28,ease:"power2.out"},42.325);
+      tl.to("#scene-inner-11",{opacity:0,duration:0.28,ease:"power2.in"},45.661);
+      tl.set("#scene-inner-11",{opacity:0},45.941);
+      tl.fromTo("#s11-bg",{opacity:0},{opacity:1,duration:0.28,ease:"power2.out"},42.325);
+      tl.to("#s11-bg",{opacity:0,duration:0.28,ease:"power2.in"},45.661);
+      tl.set("#s11-bg",{opacity:0},45.941);
+      tl.fromTo("#s11-bgimg",{"scale":1.04},{"scale":1.2,"duration":3.616,"ease":"power3.out","transformOrigin":"50% 50%"},42.325);
+      tl.from("#s11-count",{y:-14,opacity:0,duration:.35,ease:"power2.out"},42.345);
+      tl.from("#s11-num",{scale:.4,opacity:0,rotate:-8,duration:.5,ease:"back.out(2)"},42.385);
+      tl.from("#s11-title",{y:42,opacity:0,duration:.45,ease:"power3.out"},42.585);
+      tl.fromTo("#s11-rule",{scaleX:0},{scaleX:1,duration:.4,ease:"expo.out",transformOrigin:"left center"},42.745);
+      tl.from("#s11-sub",{y:18,opacity:0,duration:.4,ease:"power2.out"},42.845);
+      tl.fromTo("#cap-11",{opacity:0,y:14},{opacity:1,y:0,duration:.4,ease:"power2.out"},42.525);
+      tl.to("#cap-11",{opacity:0,duration:.3,ease:"power2.in"},45.541);
+      tl.fromTo("#scene-inner-12",{opacity:0},{opacity:1,duration:0.28,ease:"power2.out"},45.941);
+      tl.to("#scene-inner-12",{opacity:0,duration:0.28,ease:"power2.in"},49.896);
+      tl.set("#scene-inner-12",{opacity:0},50.176);
+      tl.fromTo("#s12-bg",{opacity:0},{opacity:1,duration:0.28,ease:"power2.out"},45.941);
+      tl.to("#s12-bg",{opacity:0,duration:0.28,ease:"power2.in"},49.896);
+      tl.set("#s12-bg",{opacity:0},50.176);
+      tl.fromTo("#s12-bgimg",{"scale":1.1,"yPercent":5},{"scale":1.15,"yPercent":-5,"duration":4.235,"ease":"sine.inOut","transformOrigin":"50% 50%"},45.941);
+      tl.from("#s12-count",{y:-14,opacity:0,duration:.35,ease:"power2.out"},45.961);
+      tl.from("#s12-num",{scale:.4,opacity:0,rotate:-8,duration:.5,ease:"back.out(2)"},46.001);
+      tl.from("#s12-title",{y:42,opacity:0,duration:.45,ease:"power3.out"},46.201);
+      tl.fromTo("#s12-rule",{scaleX:0},{scaleX:1,duration:.4,ease:"expo.out",transformOrigin:"left center"},46.361);
+      tl.from("#s12-sub",{y:18,opacity:0,duration:.4,ease:"power2.out"},46.461);
+      tl.fromTo("#cap-12",{opacity:0,y:14},{opacity:1,y:0,duration:.4,ease:"power2.out"},46.141);
+      tl.to("#cap-12",{opacity:0,duration:.3,ease:"power2.in"},49.776);
+      tl.fromTo("#scene-inner-13",{opacity:0},{opacity:1,duration:0.28,ease:"power2.out"},50.176);
+      tl.to("#scene-inner-13",{opacity:0,duration:0.28,ease:"power2.in"},54.216);
+      tl.set("#scene-inner-13",{opacity:0},54.496);
+      tl.fromTo("#s13-bg",{opacity:0},{opacity:1,duration:0.28,ease:"power2.out"},50.176);
+      tl.to("#s13-bg",{opacity:0,duration:0.28,ease:"power2.in"},54.216);
+      tl.set("#s13-bg",{opacity:0},54.496);
+      tl.fromTo("#s13-bgimg",{"scale":1.05},{"scale":1.18,"duration":4.32,"ease":"sine.inOut","transformOrigin":"50% 50%"},50.176);
+      tl.from("#s13-count",{y:-14,opacity:0,duration:.35,ease:"power2.out"},50.196);
+      tl.from("#s13-num",{scale:.4,opacity:0,rotate:-8,duration:.5,ease:"back.out(2)"},50.236);
+      tl.from("#s13-title",{y:42,opacity:0,duration:.45,ease:"power3.out"},50.436);
+      tl.fromTo("#s13-rule",{scaleX:0},{scaleX:1,duration:.4,ease:"expo.out",transformOrigin:"left center"},50.596);
+      tl.from("#s13-sub",{y:18,opacity:0,duration:.4,ease:"power2.out"},50.696);
+      tl.fromTo("#cap-13",{opacity:0,y:14},{opacity:1,y:0,duration:.4,ease:"power2.out"},50.376);
+      tl.to("#cap-13",{opacity:0,duration:.3,ease:"power2.in"},54.096);
+      tl.fromTo("#scene-inner-14",{opacity:0},{opacity:1,duration:0.28,ease:"power2.out"},54.496);
+      tl.to("#scene-inner-14",{opacity:0,duration:0.28,ease:"power2.in"},58.408);
+      tl.set("#scene-inner-14",{opacity:0},58.688);
+      tl.fromTo("#s14-bg",{opacity:0},{opacity:1,duration:0.28,ease:"power2.out"},54.496);
+      tl.to("#s14-bg",{opacity:0,duration:0.28,ease:"power2.in"},58.408);
+      tl.set("#s14-bg",{opacity:0},58.688);
+      tl.fromTo("#s14-bgimg",{"scale":1.18},{"scale":1.05,"duration":4.192,"ease":"sine.inOut","transformOrigin":"50% 50%"},54.496);
+      tl.from("#s14-eye",{y:-18,opacity:0,duration:.45,ease:"power2.out"},54.596);
+      tl.from("#s14-brand",{scale:.7,opacity:0,duration:.6,ease:"back.out(1.7)"},54.796);
+      tl.fromTo("#s14-rule",{scaleX:0},{scaleX:1,duration:.55,ease:"expo.out"},55.346);
+      tl.from("#s14-url",{y:20,opacity:0,duration:.5,ease:"power2.out"},55.496);
+      tl.fromTo("#s14-brand",{filter:"drop-shadow(0 0 0px rgba(255,195,0,0))"},{filter:"drop-shadow(0 0 26px rgba(255,195,0,.55))",duration:1.0,repeat:3,yoyo:true,ease:"sine.inOut"},55.596);
+      tl.from(["#s14-r1","#s14-r2"],{opacity:0,scale:.5,duration:.5,stagger:.1,ease:"back.out(2)"},54.896);
+      tl.fromTo("#cap-14",{opacity:0,y:14},{opacity:1,y:0,duration:.4,ease:"power2.out"},54.696);
+      tl.to("#cap-14",{opacity:0,duration:.3,ease:"power2.in"},58.288);
+        tl.set({}, {}, TOTAL);
+        window.__timelines["main"] = tl;
+      </script>
+    </div>
+  </body>
+</html>

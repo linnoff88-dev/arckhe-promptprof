@@ -1,0 +1,10 @@
+# deps
+node_modules/
+
+# render output (regenerável, pesado)
+**/renders/
+**/frames/
+
+# scratch
+*.log
+.DS_Store
