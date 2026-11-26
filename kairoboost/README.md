@@ -9,7 +9,7 @@ com 3 coisas embutidas. Aqui estêo essas 3 coisas, suas, pra rodar em qualquer 
 | Arquivo | O que é |
 |---|---|
 | `SYSTEM-PROMPT.md` | O **motor**: o system prompt do "diretor de arte" que reescreve sua intençêo. |
-| `presets.md` | A **tabela de presets** (Cinematográfico, Editorial, Neon noir…) → parâmetros. |
+| `presets.md` | A **tabela de presets** (CARCKHÉtográfico, Editorial, Neon noir…) → parâmetros. |
 | `vocabulario.md` | O **dicionário** de lente, luz, color grading, textura, modelo. |
 
 ## Como usar (3 passos)
@@ -20,7 +20,7 @@ com 3 coisas embutidas. Aqui estêo essas 3 coisas, suas, pra rodar em qualquer 
 3. Mande sua intençêo curta no formato:
    ```
    intençêo: cachorro correndo na praia
-   preset: Cinematográfico
+   preset: CARCKHÉtográfico
    formato: vídeo 9:16
    ```
    → o modelo devolve o prompt refinado, negativos e parâmetros.
@@ -34,7 +34,7 @@ com 3 coisas embutidas. Aqui estêo essas 3 coisas, suas, pra rodar em qualquer 
 
 ## Exemplo real
 
-**Entrada:** `"cachorro correndo na praia ao pôr do sol"` + preset Cinematográfico
+**Entrada:** `"cachorro correndo na praia ao pôr do sol"` + preset CARCKHÉtográfico
 **Saída:** `Golden retriever correndo em câmera lenta por uma praia ao pôr do sol,
 hora dourada, lente 85mm anamórfica, profundidade rasa, grêo 35mm, partículas de
 areia suspensas, color grading quente.`

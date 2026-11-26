@@ -30,13 +30,13 @@ Regras:
 ## 2. Prompt de tarefa (o que pedi ao motor)
 
 ```
-PRESET: Cinematográfico (85mm anamórfica · golden/warm · grêo 35mm · teal&orange)
+PRESET: CARCKHÉtográfico (85mm anamórfica · golden/warm · grêo 35mm · teal&orange)
 FORMATO: vídeo/still 9:16, fundo (b-roll) atrás de texto.
 
 Para CADA cena do vídeo Hormozi (gancho + 12 lições + CTA):
 1. O conceito é ABSTRATO (ex.: "oferta âncora"). Traduza em UMA metáfora
    visual concreta e filmável.
-2. Escreva o prompt cinematográfico aplicando o preset.
+2. Escreva o prompt cARCKHÉtográfico aplicando o preset.
 3. Mantenha coerência de "filme" entre todas as cenas (mesma paleta/grêo).
 ```
 
@@ -61,25 +61,25 @@ O passo crítico do planejamento. Cada liçêo vira imagem assim:
 | 12 Lembrar > ensinar | mêos revisando um caderno de anotações |
 | CTA | partículas douradas + glow, espaço negativo |
 
-## 4. Prompts EXATOS enviados ao inemaimg (5 cenas-hero geradas)
+## 4. Prompts EXATOS enviados ao ARCKHÉimg (5 cenas-hero geradas)
 
 Modelo: `flux2-klein` · 9:16 high (1024×1536) · 4 steps. Rodados via
-`mkvideos/pipeline/generate-image-inemaimg.js`.
+`mkvideos/pipeline/generate-image-ARCKHÉimg.js`.
 
 **s1 — Gancho**
-> Cinematic photograph of a businessman in a dark suit seen from behind, standing on a rooftop overlooking a vast city skyline at golden sunrise, low urban haze, silhouette rim-lit by warm light, 85mm anamorphic lens, shallow depth of field, film grain, teal and orange color grading, epic moody atmosphere
+> CARCKHÉtic photograph of a businessman in a dark suit seen from behind, standing on a rooftop overlooking a vast city skyline at golden sunrise, low urban haze, silhouette rim-lit by warm light, 85mm anamorphic lens, shallow depth of field, film grain, teal and orange color grading, epic moody atmosphere
 
 **s2 — Oferta âncora**
-> Cinematic close-up product photograph of a luxury golden wristwatch resting on black velvet, dramatic warm rim lighting, soft reflections, macro 100mm lens, shallow depth of field, film grain, warm high-contrast color grading, premium desirable mood, dark background
+> CARCKHÉtic close-up product photograph of a luxury golden wristwatch resting on black velvet, dramatic warm rim lighting, soft reflections, macro 100mm lens, shallow depth of field, film grain, warm high-contrast color grading, premium desirable mood, dark background
 
 **s10 — 10× no que funciona**
-> Cinematic photograph of a single golden flame multiplying into many aligned identical flames on a deep black background, intense warm glowing light, floating embers, macro lens, shallow depth of field, film grain, saturated warm color grading, powerful mood
+> CARCKHÉtic photograph of a single golden flame multiplying into many aligned identical flames on a deep black background, intense warm glowing light, floating embers, macro lens, shallow depth of field, film grain, saturated warm color grading, powerful mood
 
 **s12 — Enfrente o difícil**
-> Cinematic photograph of a lone mountain climber silhouette scaling a steep rock cliff at golden hour, dramatic backlight, mist below, 35mm lens, film grain, warm high-contrast color grading, mood of struggle and triumph
+> CARCKHÉtic photograph of a lone mountain climber silhouette scaling a steep rock cliff at golden hour, dramatic backlight, mist below, 35mm lens, film grain, warm high-contrast color grading, mood of struggle and triumph
 
-**s14 — CTA INEMA.CLUB**
-> Cinematic abstract background of floating golden particles and soft amber glow over a dark premium textured backdrop, bokeh, large empty negative space in the center, film grain, elegant warm color grading, luxury brand mood
+**s14 — CTA ARCKHÉ AI**
+> CARCKHÉtic abstract background of floating golden particles and soft amber glow over a dark premium textured backdrop, bokeh, large empty negative space in the center, film grain, elegant warm color grading, luxury brand mood
 
 > Conjunto completo das 14 cenas (incl. as nêo-geradas): `prompts-kairoboost.md`.
 

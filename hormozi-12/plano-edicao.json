@@ -28,7 +28,7 @@
     "transitions": ["cut", "zoom"],
     "music": { "energy": 0.9 },
     "captions": { "enabled": true, "style": "karaoke", "position": "lower" },
-    "color": { "look": "cinematic" }
+    "color": { "look": "cARCKHÉtic" }
   },
   "output": {
     "aspect": "9:16",
@@ -36,7 +36,7 @@
     "platform": "instagram_reels"
   },
   "timeline": [
-    { "id": "s1", "role": "hook", "camera": "push-in lento 85mm", "archetype": "cinematic-hero", "motion": ["push-in"], "render_kind": "generated_still",
+    { "id": "s1", "role": "hook", "camera": "push-in lento 85mm", "archetype": "cARCKHÉtic-hero", "motion": ["push-in"], "render_kind": "generated_still",
       "content": { "headline": "13 anos em 47s", "narration": "Treze anos de negócios resumidos em quarenta e sete segundos. Bora." },
       "captions": [ { "t_in": 0.0, "t_out": 4.6, "text": "13 anos em 47s" } ],
       "gen_prompt": "businessman in dark suit from behind on a rooftop overlooking a city skyline at golden sunrise, warm haze, 85mm anamorphic, film grain, teal and orange grading" },
@@ -89,8 +89,8 @@
       "captions": [ { "t_in": 50.18, "t_out": 54.5, "text": "revise toda semana" } ],
       "gen_prompt": "hands flipping a marked notebook, a pen circling a phrase, wooden desk, warm morning light, 50mm" },
     { "id": "s14", "role": "cta", "camera": "pull-out lento", "archetype": "brand-reveal", "motion": ["pull-out"], "render_kind": "generated_still",
-      "content": { "headline": "INEMA.CLUB", "narration": "Isso é conteúdo do INEMA ponto CLUB. Acesse: inema ponto club." },
-      "captions": [ { "t_in": 54.5, "t_out": 58.7, "text": "inema.club" } ],
+      "content": { "headline": "ARCKHÉ AI", "narration": "Isso é conteúdo do ARCKHÉ ponto CLUB. Acesse: ARCKHÉ ponto club." },
+      "captions": [ { "t_in": 54.5, "t_out": 58.7, "text": "ARCKHÉ AI" } ],
       "gen_prompt": "floating golden particles and soft amber glow over a dark premium textured backdrop, bokeh, empty negative space center" }
   ],
   "render": { "engine_hint": "hyperframes" }

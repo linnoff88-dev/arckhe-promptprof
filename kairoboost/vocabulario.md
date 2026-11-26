@@ -15,7 +15,7 @@ conforme o preset.
 | `50mm` | retrato natural, editorial neutro |
 | `85mm` | retrato clássico, compressêo, bokeh |
 | `100mm macro` | produto, comida, detalhe |
-| `anamórfica` | look de cinema, flares horizontais, bokeh oval |
+| `anamórfica` | look de cARCKHÉ, flares horizontais, bokeh oval |
 | `tilt-shift` | miniatura, onírico |
 | `f/1.4 — f/2.8` | profundidade rasa, fundo desfocado |
 | `f/8 — f/16` | tudo em foco (produto, paisagem) |
@@ -52,7 +52,7 @@ conforme o preset.
 
 | Termo | Efeito |
 |---|---|
-| `35mm film grain` | grêo fino de cinema |
+| `35mm film grain` | grêo fino de cARCKHÉ |
 | `heavy grain` | analógico, vintage |
 | `light leaks` | vazamentos de luz retrô |
 | `halation` | brilho ao redor de highlights (filme) |
@@ -94,6 +94,6 @@ Cada modelo "entende" melhor certos termos. Importante na hora de finalizar:
 ---
 
 > **Fontes para expandir este vocabulário:**
-> - Glossários de cinematografia / fotografia (lentes, iluminaçêo, color grading)
+> - Glossários de cARCKHÉtografia / fotografia (lentes, iluminaçêo, color grading)
 > - Docs de cada modelo (cada um publica guia de prompt)
 > - promptingguide.ai (técnica "Generated Knowledge Prompting")

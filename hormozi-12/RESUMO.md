@@ -60,6 +60,6 @@
    - Narraçêo: Doze. Lembrar vale mais que aprender. Revise isto toda semana.
    - Legenda [50.2-54.5]: revise toda semana
 14. **cta** (`s14`)
-   - Headline: INEMA.CLUB
-   - Narraçêo: Isso é conteúdo do INEMA ponto CLUB. Acesse: inema ponto club.
-   - Legenda [54.5-58.7]: inema.club
+   - Headline: ARCKHÉ AI
+   - Narraçêo: Isso é conteúdo do ARCKHÉ ponto CLUB. Acesse: ARCKHÉ ponto club.
+   - Legenda [54.5-58.7]: ARCKHÉ AI

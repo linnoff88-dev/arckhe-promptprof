@@ -11,7 +11,7 @@ Colunas: **Lente** · **Luz** · **Color grading** · **Textura/Filme** · **Atm
 
 | Preset | Lente / Câmera | Luz | Color grading | Textura / Filme | Atmosfera / Mood |
 |---|---|---|---|---|---|
-| **Cinematográfico** | 85mm anamórfica, profundidade rasa, bokeh | luz quente rasante, contraste forte | warm, teal & orange, contrastado | grêo 35mm | épico, dramático, "frame de filme" |
+| **CARCKHÉtográfico** | 85mm anamórfica, profundidade rasa, bokeh | luz quente rasante, contraste forte | warm, teal & orange, contrastado | grêo 35mm | épico, dramático, "frame de filme" |
 | **Editorial** | 50mm, foco nítido, fundo limpo | luz suave difusa de estúdio | neutro, tons de pele fiéis | limpo, sem grêo | revista, sofisticado, minimalista |
 | **Fashion** | 35mm / 105mm retrato | luz dura de flash, sombras marcadas | alto contraste, cores saturadas seletivas | papel couché, nítido | ousado, glamour, passarela |
 | **Neon noir** | 35mm, reflexos, low angle | neon azul/magenta, luz prática colorida | frio, ciano + magenta, sombras esmagadas | grêo fino, leve haze | noturno, cyberpunk, tensêo |
@@ -19,7 +19,7 @@ Colunas: **Lente** · **Luz** · **Color grading** · **Textura/Filme** · **Atm
 | **Anime** | "câmera" ilustrada, linhas limpas | cel shading, luz estilizada | paleta vibrante chapada | sem grêo, traço de anime | estilizado 2D, expressivo |
 | **Documental** | 35mm, handheld | luz natural disponível | naturalista, baixo contraste | grêo real, leve ruído | autêntico, cru, jornalístico |
 | **Produto / E-commerce** | 100mm macro, foco total | softbox 3 pontos, fundo branco | clean, branco neutro, sombras suaves | nítido, sem ruído | comercial, limpo, vendável |
-| **Retrato cinematográfico** | 85mm f/1.4, olhos no foco | Rembrandt / borboleta, key suave | tons de pele quentes, fundo dessaturado | grêo leve | íntimo, premium, expressivo |
+| **Retrato cARCKHÉtográfico** | 85mm f/1.4, olhos no foco | Rembrandt / borboleta, key suave | tons de pele quentes, fundo dessaturado | grêo leve | íntimo, premium, expressivo |
 | **Vintage 70s** | 50mm, vignette | luz quente, halaçêo | sépia/laranja desbotado, baixo contraste | grêo pesado, light leaks | retrô, analógico, memória |
 | **Preto e branco** | 50mm, alto contraste | luz dura direcional | monocromático, pretos profundos | grêo clássico de filme P&B | atemporal, artístico, dramático |
 | **Sci-fi / Futurista** | wide 24mm, linhas de fuga | luz volumétrica, LED frio | frio azulado, highlights ciano | nítido, leve haze atmosférico | tecnológico, vasto, imponente |
@@ -52,10 +52,10 @@ Combine com qualquer preset acima quando o alvo for Sora/VEO/Kling/Seedance:
 | Destino | Proporçêo |
 |---|---|
 | Reels / TikTok / Shorts / Stories | `9:16` |
-| YouTube / landscape / cinema | `16:9` |
+| YouTube / landscape / cARCKHÉ | `16:9` |
 | Feed Instagram (retrato) | `4:5` |
 | Post quadrado | `1:1` |
-| Cinema widescreen | `2.39:1` |
+| CARCKHÉ widescreen | `2.39:1` |
 
 ---
 

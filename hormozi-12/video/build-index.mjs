@@ -1,6 +1,6 @@
 // ============================================================================
 // 13 ANOS EM 47 SEGUNDOS — 12 lições de negócios (Hormozi)
-// Rapid-fire short: hook (s1) + 12 lessons (s2..s13) + CTA INEMA.CLUB (s14).
+// Rapid-fire short: hook (s1) + 12 lessons (s2..s13) + CTA ARCKHÉ AI (s14).
 // Lessons geradas por array (LESSONS) numa cena-modelo única.
 // Uso: node build-index.mjs --vertical  (9:16 Shorts)  | node build-index.mjs (16:9)
 // ============================================================================
@@ -46,7 +46,7 @@ const LESSONS = [
   { n: "12", title: "Lembrar &gt; ensinar", sub: "Revise toda semana até virar hábito." },
 ];
 
-// Fundo cinematográfico ilustrativo em TODAS as cenas (still inemaimg + blur + overlay + Ken Burns)
+// Fundo cARCKHÉtográfico ilustrativo em TODAS as cenas (still ARCKHÉimg + blur + overlay + Ken Burns)
 const BG = {}; S.forEach((s) => { BG[s.i] = true; });
 const isLesson = (i) => i !== 1 && i !== S.length;
 
@@ -82,7 +82,7 @@ const CAPTIONS = [
   "Foco radical: 1 canal, 1 avatar, 1 produto",
   "Enfrente o difícil",
   "Lembrar > ensinar — revise toda semana",
-  "Continua em inema.club",
+  "Continua em ARCKHÉ AI",
 ];
 
 // ---------- CENAS ----------
@@ -112,9 +112,9 @@ function lessonScene(i, L) {
 function sceneCTA(i) {
   return `
     <div class="cta-eyebrow" id="s${i}-eye">CONTINUA EM</div>
-    <div class="cta-brand" id="s${i}-brand"><span class="b1">INEMA</span><span class="bdotsep">.</span><span class="b2">CLUB</span></div>
+    <div class="cta-brand" id="s${i}-brand"><span class="b1">ARCKHÉ</span><span class="bdotsep">.</span><span class="b2">CLUB</span></div>
     <div class="rule center" id="s${i}-rule"></div>
-    <div class="cta-url mono" id="s${i}-url"><span class="cta-globe">🌐</span>inema.club</div>
+    <div class="cta-url mono" id="s${i}-url"><span class="cta-globe">🌐</span>ARCKHÉ AI</div>
     <div class="reg tl" id="s${i}-r1"></div><div class="reg br" id="s${i}-r2"></div>`;
 }
 
@@ -132,7 +132,7 @@ function anim(i, t) {
   P(`tl.fromTo("#scene-inner-${i}",{opacity:0},{opacity:1,duration:${FADE},ease:"power2.out"},${t});`);
   P(`tl.to("#scene-inner-${i}",{opacity:0,duration:${FADE},ease:"power2.in"},${round(S[i - 1].end - FADE)});`);
   P(`tl.set("#scene-inner-${i}",{opacity:0},${round(S[i - 1].end)});`);
-  // fundo cinematográfico: fade junto + Ken Burns lento
+  // fundo cARCKHÉtográfico: fade junto + Ken Burns lento
   if (BG[i]) {
     P(`tl.fromTo("#s${i}-bg",{opacity:0},{opacity:1,duration:${FADE},ease:"power2.out"},${t});`);
     P(`tl.to("#s${i}-bg",{opacity:0,duration:${FADE},ease:"power2.in"},${round(S[i - 1].end - FADE)});`);
@@ -231,7 +231,7 @@ const html = `<!doctype html>
       .scene-inner{position:relative;z-index:2;width:100%;height:100%;display:flex;flex-direction:column;justify-content:center}
       .accent{color:var(--accent)}.accent2{color:var(--accent2)}.dim{color:var(--muted)}
 
-      /* ---- fundo cinematográfico ilustrativo (todas as cenas) ---- */
+      /* ---- fundo cARCKHÉtográfico ilustrativo (todas as cenas) ---- */
       .scene-bg{position:absolute;inset:0;z-index:0;overflow:hidden}
       .scene-bgimg{position:absolute;inset:-7%;width:114%;height:114%;object-fit:cover;
         filter:blur(5px) saturate(1.06) brightness(.92);will-change:transform}

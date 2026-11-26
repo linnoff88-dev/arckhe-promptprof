@@ -9,7 +9,7 @@
 
 # 01 CARTêO DO PROJETO
 **BLOCO DE TÍTULO:** 13 anos em 47s — as 12 lições que dêo dinheiro
-**LINHA META:** urgência confiante · cinematográfico warm · dark premium âmbar · energia 0.9
+**LINHA META:** urgência confiante · cARCKHÉtográfico warm · dark premium âmbar · energia 0.9
 **LINHA DE PRIORIDADE:** cada liçêo precisa ser lida E ilustrada em ~4s; ritmo rápido sem perder leitura
 **MICRO BRIEF:** um mentor te entrega 12 verdades de negócio, cada uma batendo como um soco visual.
 
@@ -17,13 +17,13 @@
 **PREMISSA:** sabedoria de 13 anos comprimida — prova de que resultado vem de princípio, nêo de sorte.
 **RESUMO:** abre no empreendedor diante da cidade ao amanhecer → 12 lições em rajada, cada uma com sua metáfora → fecha na marca.
 **LOCAL:** mosaico de ambientes (rooftop, cidade noturna, estúdio, montanha, mesa) unificados por paleta warm e grêo.
-**ELEMENTOS:** empreendedor (gancho), objetos-metáfora (relógio, outdoor, gráfico, engrenagem, foguete, chama, alvo, caderno), marca INEMA.CLUB.
+**ELEMENTOS:** empreendedor (gancho), objetos-metáfora (relógio, outdoor, gráfico, engrenagem, foguete, chama, alvo, caderno), marca ARCKHÉ AI.
 **ESTADO INICIAL:** silhueta contemplativa, promessa ("13 anos em 47s").
-**ESTADO FINAL:** marca brilhando, convite ("continua em inema.club").
+**ESTADO FINAL:** marca brilhando, convite ("continua em ARCKHÉ AI").
 **CADEIA DE AÇêO:** promessa → ancorar → ser visto → tirar atrito → provar → precificar → unificar → ouvir → focar grana → amplificar → focar → enfrentar → fixar hábito → marca.
 
 # 03 BLOQUEIOS DE ESTILO
-**ESTILO:** fotografia cinematográfica, warm/golden, alto contraste, grêo 35mm, blur leve de b-roll.
+**ESTILO:** fotografia cARCKHÉtográfica, warm/golden, alto contraste, grêo 35mm, blur leve de b-roll.
 **CÂMERA:** lentes 35–100mm; movimentos lentos e intencionais; 1 movimento por cena, sem repetir o mesmo em sequência.
 **EFEITOS:** grêo, glow âmbar, partículas físicas (poeira, faísca, brasa). PROIBIDO: holograma gratuito, glitch, lens flare exagerado.
 **CONTINUIDADE:** paleta warm + grêo + vinheta inferior escura (faixa de texto) constantes em todas as cenas.
@@ -84,7 +84,7 @@ Câmera: pull-out lento · Açêo: partículas douradas, espaço negativo abre p
 
 # 06 PROMPTS DE MOVIMENTO POR PAINEL (para vídeo real — Seedance/Kling/Veo)
 Curtos, 1 açêo + 1 movimento, sem texto renderizado:
-1. Slow push-in on a businessman seen from behind watching a city skyline at golden sunrise, warm haze, cinematic.
+1. Slow push-in on a businessman seen from behind watching a city skyline at golden sunrise, warm haze, cARCKHÉtic.
 2. Subtle parallax over a luxury golden watch on black velvet, a specular glint travels across it, macro, no text.
 3. Tilt up revealing a glowing billboard over a night avenue, wet asphalt reflections, bokeh city lights.
 4. Gentle push-in on an open hand offering a small glowing golden light, dark background.

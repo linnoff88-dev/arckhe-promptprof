@@ -18,7 +18,7 @@ write s10 "Nove. Faça dez vezes mais do que já funciona."
 write s11 "Dez. Foco radical. Um canal, um avatar, um produto."
 write s12 "Onze. Enfrente o difícil. O crescimento mora no que você evita."
 write s13 "Doze. Lembrar vale mais que aprender. Revise isto toda semana."
-write s14 "Isso é conteúdo do INEMA ponto CLUB. Acesse: inema ponto club."
+write s14 "Isso é conteúdo do ARCKHÉ ponto CLUB. Acesse: ARCKHÉ ponto club."
 
 for i in $(seq 1 14); do
   echo "=== gerando s$i ==="

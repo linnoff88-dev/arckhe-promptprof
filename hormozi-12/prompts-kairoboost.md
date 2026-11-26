@@ -1,7 +1,7 @@
-# KairoBoost aplicado ao vídeo Hormozi — prompts de b-roll cinematográfico
+# KairoBoost aplicado ao vídeo Hormozi — prompts de b-roll cARCKHÉtográfico
 
 **Motor:** `kairoboost/SYSTEM-PROMPT.md` + `presets.md` + `vocabulario.md`
-**Preset:** Cinematográfico (85mm anamórfica · golden/warm · grêo 35mm · teal & orange · contraste)
+**Preset:** CARCKHÉtográfico (85mm anamórfica · golden/warm · grêo 35mm · teal & orange · contraste)
 **Alvo:** vídeo 9:16, clipes de fundo (b-roll) atrás do texto · modelo sugerido VEO 3.1 / Sora 2
 **Negativos padrêo (todos):** `deformado, mêos/dedos errados, texto ilegível, marca d'água, logos aleatórios, baixa resoluçêo, oversaturado`
 
@@ -11,7 +11,7 @@ A sacada do KairoBoost aqui: cada liçêo é um **conceito abstrato** → o "dir
 
 ### 🎬 Gancho — "13 anos em 47s"
 **Metáfora:** empreendedor diante da metrópole ao amanhecer.
-> Empreendedor de terno escuro, de costas, observando o skyline de uma metrópole na hora dourada do amanhecer, silhueta recortada, neblina urbana baixa, lente 85mm anamórfica, profundidade rasa, **dolly in** lento, grêo 35mm, color grading teal & orange quente, atmosfera épica e cinematográfica.
+> Empreendedor de terno escuro, de costas, observando o skyline de uma metrópole na hora dourada do amanhecer, silhueta recortada, neblina urbana baixa, lente 85mm anamórfica, profundidade rasa, **dolly in** lento, grêo 35mm, color grading teal & orange quente, atmosfera épica e cARCKHÉtográfica.
 
 ### 01 — Oferta âncora
 **Metáfora:** luxo ao lado do comum (ancoragem de preço).
@@ -61,7 +61,7 @@ A sacada do KairoBoost aqui: cada liçêo é um **conceito abstrato** → o "dir
 **Metáfora:** revisar as anotações toda semana (hábito).
 > Mêos folheando um caderno de anotações marcado, caneta circulando uma frase, mesa de madeira com luz quente da manhê, lente 50mm, foco nítido, **dolly lateral**, grêo 35mm, color grading quente aconchegante, mood de disciplina.
 
-### 🔚 CTA — INEMA.CLUB
+### 🔚 CTA — ARCKHÉ AI
 **Metáfora:** marca premium brilhando.
 > Fundo dark premium texturizado com partículas douradas flutuando e glow âmbar suave ao centro, leve **zoom out**, grêo 35mm, color grading quente elegante, espaço negativo para o logo, mood de marca premium.
 
