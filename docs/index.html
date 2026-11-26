@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>promptprof — como criar vídeos cinematográficos com prompt + IA local</title>
-<meta name="description" content="Pipeline aberto: motor de prompts KairoBoost → imagens inemaimg (flux2-klein) → vídeo HyperFrames (HTML→MP4) com narração TTS e CTA INEMA.CLUB." />
+<meta name="description" content="Pipeline aberto: motor de prompts KairoBoost → imagens inemaimg (flux2-klein) → vídeo HyperFrames (HTML→MP4) com narraçêo TTS e CTA INEMA.CLUB." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
@@ -139,7 +139,7 @@
   <div class="wrap">
     <div class="eyebrow"><span class="dot"></span>PROMPT · IMAGEM · VÍDEO — 100% LOCAL</div>
     <h1>Da ideia ao <span class="accent">Reel cinematográfico</span><br>num pipeline só.</h1>
-    <p class="lead">O <b>promptprof</b> transforma um assunto em vídeo vertical 9:16 narrado e ilustrado — usando um motor de prompts, geração de imagem local e render HTML→MP4. Sem chave de API paga, dark premium âmbar, CTA INEMA.CLUB.</p>
+    <p class="lead">O <b>promptprof</b> transforma um assunto em vídeo vertical 9:16 narrado e ilustrado — usando um motor de prompts, geraçêo de imagem local e render HTML→MP4. Sem chave de API paga, dark premium âmbar, CTA INEMA.CLUB.</p>
     <div class="cta-row">
       <a class="btn btn-p" href="#pipeline">Ver o pipeline →</a>
       <a class="btn btn-s" href="https://github.com/inematds/promptprof" target="_blank" rel="noopener">Código no GitHub</a>
@@ -160,7 +160,7 @@
       </g>
       <text x="155" y="135" text-anchor="middle" fill="#FFC300" font-family="Sora,sans-serif" font-weight="800" font-size="20">1 · Prompt</text>
       <text x="155" y="165" text-anchor="middle" fill="#90a3c0" font-family="monospace" font-size="13">KairoBoost</text>
-      <text x="155" y="186" text-anchor="middle" fill="#748CAB" font-family="monospace" font-size="11">intenção → direção de arte</text>
+      <text x="155" y="186" text-anchor="middle" fill="#748CAB" font-family="monospace" font-size="11">intençêo → direçêo de arte</text>
       <!-- stage 2 -->
       <g filter="url(#gl)">
         <rect x="405" y="90" width="190" height="120" rx="16" fill="#1D2D44" stroke="#2EC4B6" stroke-width="1.5"/>
@@ -183,7 +183,7 @@
   <div class="wrap">
     <div class="kicker">O que é</div>
     <h2>Um estúdio de vídeo que cabe num repositório.</h2>
-    <p class="sub">Três peças encadeadas: um <b class="accent">motor de prompts</b> (KairoBoost), um <b class="accent">servidor de imagem local</b> (inemaimg) e um <b class="accent">renderizador de vídeo determinístico</b> (HyperFrames). Cada vídeo é um pequeno projeto: 14 cenas, narração TTS, fundo cinematográfico com movimento de câmera e a CTA do INEMA.CLUB no fim.</p>
+    <p class="sub">Três peças encadeadas: um <b class="accent">motor de prompts</b> (KairoBoost), um <b class="accent">servidor de imagem local</b> (inemaimg) e um <b class="accent">renderizador de vídeo determinístico</b> (HyperFrames). Cada vídeo é um pequeno projeto: 14 cenas, narraçêo TTS, fundo cinematográfico com movimento de câmera e a CTA do INEMA.CLUB no fim.</p>
   </div>
 </section>
 
@@ -195,7 +195,7 @@
       <div class="card">
         <div class="step-n">01</div>
         <h3>Prompt · KairoBoost</h3>
-        <p>Um system prompt de “diretor de arte” transforma uma intenção curta (ex.: “cachorro na praia”) em prompt cinematográfico estruturado — lente, luz, color grading, textura.</p>
+        <p>Um system prompt de “diretor de arte” transforma uma intençêo curta (ex.: “cachorro na praia”) em prompt cinematográfico estruturado — lente, luz, color grading, textura.</p>
         <span class="chip">SYSTEM-PROMPT.md</span><span class="chip">presets.md</span>
       </div>
       <div class="card">
@@ -207,7 +207,7 @@
       <div class="card">
         <div class="step-n">03</div>
         <h3>Vídeo · HyperFrames</h3>
-        <p>Compõe HTML/CSS/GSAP → MP4 com narração TTS (<span class="mono">pf_dora</span>), blur + Ken Burns dirigido, legendas karaokê e CTA INEMA.CLUB.</p>
+        <p>Compõe HTML/CSS/GSAP → MP4 com narraçêo TTS (<span class="mono">pf_dora</span>), blur + Ken Burns dirigido, legendas karaokê e CTA INEMA.CLUB.</p>
         <span class="chip">HTML → MP4</span><span class="chip">TTS Kokoro</span>
       </div>
     </div>
@@ -216,14 +216,14 @@
 
 <section id="comandos">
   <div class="wrap">
-    <div class="kicker">Mão na massa</div>
+    <div class="kicker">Mêo na massa</div>
     <h2>Passo a passo (comandos).</h2>
-    <p class="sub">Cada vídeo vive em <span class="mono">&lt;projeto&gt;/video/</span>. O timing é fonte única: a duração real do áudio alimenta áudio E animação.</p>
+    <p class="sub">Cada vídeo vive em <span class="mono">&lt;projeto&gt;/video/</span>. O timing é fonte única: a duraçêo real do áudio alimenta áudio E animaçêo.</p>
 <pre><code><span class="c"># 1) projeto + fontes</span>
 npx hyperframes init video --example blank --non-interactive
 node fetch-fonts.mjs                  <span class="c"># Sora · Inter · JetBrains Mono → assets/fonts</span>
 
-<span class="c"># 2) narração (14 faixas TTS, voz pf_dora)</span>
+<span class="c"># 2) narraçêo (14 faixas TTS, voz pf_dora)</span>
 bash narration.sh                     <span class="c"># gera assets/audio/sN.wav + durações</span>
 
 <span class="c"># 3) imagens (14 stills 9:16 via inemaimg local)</span>
@@ -250,9 +250,9 @@ npx hyperframes render --quality high --output renders/meu-video-9x16.mp4</code>
 │   └── vocabulario.md           <span class="c"># dicionário + termos por modelo</span>
 ├── &lt;projeto&gt;-NN/                <span class="c"># um vídeo (ex.: claude-top12)</span>
 │   ├── plano-edicao.json         <span class="c"># plano (skill video-plan-editor)</span>
-│   ├── MDD-PACKAGE.md           <span class="c"># direção dinâmica (storyboard)</span>
+│   ├── MDD-PACKAGE.md           <span class="c"># direçêo dinâmica (storyboard)</span>
 │   └── video/
-│       ├── build-index.mjs       <span class="c"># gerador da composição</span>
+│       ├── build-index.mjs       <span class="c"># gerador da composiçêo</span>
 │       ├── narration.sh          <span class="c"># TTS das 14 cenas</span>
 │       ├── assets/{img,audio,fonts}
 │       └── renders/*.mp4         <span class="c"># saída final</span>
@@ -265,8 +265,8 @@ npx hyperframes render --quality high --output renders/meu-video-9x16.mp4</code>
     <div class="kicker">Receita</div>
     <h2>Como criar um vídeo novo.</h2>
     <ol class="steps">
-      <li><b>Defina o assunto e o roteiro</b><div class="d">Gancho + N pontos + CTA. Cada cena = 1 frase curta de narração (~3–5s).</div></li>
-      <li><b>Escreva a narração</b><div class="d">Edite <span class="mono">narration.sh</span> com os textos e rode — gera os WAV e mede as durações reais.</div></li>
+      <li><b>Defina o assunto e o roteiro</b><div class="d">Gancho + N pontos + CTA. Cada cena = 1 frase curta de narraçêo (~3–5s).</div></li>
+      <li><b>Escreva a narraçêo</b><div class="d">Edite <span class="mono">narration.sh</span> com os textos e rode — gera os WAV e mede as durações reais.</div></li>
       <li><b>Gere as imagens-metáfora</b><div class="d">Traduza cada ponto numa cena visual concreta (use o KairoBoost) e gere no inemaimg.</div></li>
       <li><b>Configure o build</b><div class="d">No <span class="mono">build-index.mjs</span>: array <span class="mono">AUDIO[]</span> (durações), <span class="mono">LESSONS[]</span> (títulos/subs), <span class="mono">CAPTIONS[]</span> e o movimento por cena.</div></li>
       <li><b>Valide e renderize</b><div class="d"><span class="mono">lint</span> 0 erros + <span class="mono">inspect</span> 0 problemas → <span class="mono">render --quality high</span>.</div></li>
@@ -286,7 +286,7 @@ npx hyperframes render --quality high --output renders/meu-video-9x16.mp4</code>
       </div>
       <div class="card ex">
         <h3>Pare de planejar <span class="tag">/executar-12</span></h3>
-        <p>Execução &gt; plano. Provocação viral em 12 passos: do plano perfeito ao “fuja do raso”.</p>
+        <p>Execuçêo &gt; plano. Provocaçêo viral em 12 passos: do plano perfeito ao “fuja do raso”.</p>
         <div class="dur">9:16 · ~73s · 14 cenas</div>
       </div>
       <div class="card ex">
@@ -304,11 +304,11 @@ npx hyperframes render --quality high --output renders/meu-video-9x16.mp4</code>
     <h2>Ferramentas.</h2>
     <table>
       <tr><th>Camada</th><th>Ferramenta</th><th>Papel</th></tr>
-      <tr><td>Prompt</td><td class="mono">kairoboost</td><td>Motor “diretor de arte” — intenção → prompt cinematográfico</td></tr>
-      <tr><td>Imagem</td><td class="mono">inemaimg · flux2-klein</td><td>Geração local de stills 9:16 (FastAPI, sem API paga)</td></tr>
+      <tr><td>Prompt</td><td class="mono">kairoboost</td><td>Motor “diretor de arte” — intençêo → prompt cinematográfico</td></tr>
+      <tr><td>Imagem</td><td class="mono">inemaimg · flux2-klein</td><td>Geraçêo local de stills 9:16 (FastAPI, sem API paga)</td></tr>
       <tr><td>Vídeo</td><td class="mono">HyperFrames</td><td>HTML/CSS/GSAP → MP4 (Chrome headless + FFmpeg)</td></tr>
-      <tr><td>Voz</td><td class="mono">Kokoro · pf_dora</td><td>Narração TTS local PT-BR</td></tr>
-      <tr><td>Direção</td><td class="mono">MDD · video-plan-editor</td><td>Storyboard, câmera, plano de edição validado</td></tr>
+      <tr><td>Voz</td><td class="mono">Kokoro · pf_dora</td><td>Narraçêo TTS local PT-BR</td></tr>
+      <tr><td>Direçêo</td><td class="mono">MDD · video-plan-editor</td><td>Storyboard, câmera, plano de ediçêo validado</td></tr>
     </table>
   </div>
 </section>
@@ -317,11 +317,11 @@ npx hyperframes render --quality high --output renders/meu-video-9x16.mp4</code>
   <div class="wrap">
     <div class="kicker">Dúvidas</div>
     <h2>FAQ.</h2>
-    <details><summary>Precisa de chave de API paga?</summary><div class="body">Não. Imagem (inemaimg/flux2-klein), voz (Kokoro) e render (HyperFrames) rodam local. Só os vídeos finais não vão pro git (pesados) — o resto é tudo reproduzível.</div></details>
-    <details><summary>Como o áudio fica sincronizado com a animação?</summary><div class="body">Timing é fonte única: o array <span class="mono">AUDIO[]</span> com as durações reais (medidas via ffprobe) alimenta tanto o <span class="mono">data-start/duration</span> quanto os tempos dos tweens GSAP. Áudio e movimento sempre batem.</div></details>
+    <details><summary>Precisa de chave de API paga?</summary><div class="body">Nêo. Imagem (inemaimg/flux2-klein), voz (Kokoro) e render (HyperFrames) rodam local. Só os vídeos finais nêo vêo pro git (pesados) — o resto é tudo reproduzível.</div></details>
+    <details><summary>Como o áudio fica sincronizado com a animaçêo?</summary><div class="body">Timing é fonte única: o array <span class="mono">AUDIO[]</span> com as durações reais (medidas via ffprobe) alimenta tanto o <span class="mono">data-start/duration</span> quanto os tempos dos tweens GSAP. Áudio e movimento sempre batem.</div></details>
     <details><summary>Posso usar comercialmente?</summary><div class="body">O <span class="mono">flux2-klein</span> é FLUX Non-Commercial. Para uso comercial troque por <span class="mono">qwen-edit-2511</span> (Apache 2.0) ou <span class="mono">ernie</span> no inemaimg.</div></details>
     <details><summary>Dá pra fazer 16:9 (YouTube)?</summary><div class="body">Sim — o <span class="mono">build-index.mjs</span> roda <span class="mono">node build-index.mjs</span> (16:9) ou <span class="mono">--vertical</span> (9:16). Os overrides <span class="mono">body.v</span> já reenquadram tudo.</div></details>
-    <details><summary>Quantas cenas por vídeo?</summary><div class="body">O padrão aqui é 14 (gancho + 12 + CTA), mas é livre: o nº de cenas = nº de itens nos arrays. 4–12 cenas de conteúdo é o range saudável pra Shorts.</div></details>
+    <details><summary>Quantas cenas por vídeo?</summary><div class="body">O padrêo aqui é 14 (gancho + 12 + CTA), mas é livre: o nº de cenas = nº de itens nos arrays. 4–12 cenas de conteúdo é o range saudável pra Shorts.</div></details>
   </div>
 </section>
 
@@ -330,7 +330,7 @@ npx hyperframes render --quality high --output renders/meu-video-9x16.mp4</code>
     <div style="font-family:'JetBrains Mono',monospace;color:var(--muted);font-size:13px;letter-spacing:.3em;margin-bottom:16px">CONTINUA EM</div>
     <div class="big">INEMA<span class="b2">.CLUB</span></div>
     <div class="u">🌐 <a class="sky" href="https://inema.club" target="_blank" rel="noopener">inema.club</a></div>
-    <div class="fine">promptprof — pipeline aberto de geração de vídeo · <a class="sky" href="https://github.com/inematds/promptprof" target="_blank" rel="noopener">github.com/inematds/promptprof</a></div>
+    <div class="fine">promptprof — pipeline aberto de geraçêo de vídeo · <a class="sky" href="https://github.com/inematds/promptprof" target="_blank" rel="noopener">github.com/inematds/promptprof</a></div>
   </div>
 </footer>
 

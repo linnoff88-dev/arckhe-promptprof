@@ -11,15 +11,15 @@
   },
   "intent": {
     "goal": "viral",
-    "best_action_rationale": "Rajada de 12 lições com prova visual por lição; ritmo viral 9:16 com gancho de promessa numérica e CTA de marca.",
-    "angle": "13 anos de negócios comprimidos — resultado vem de princípio, não de sorte",
+    "best_action_rationale": "Rajada de 12 lições com prova visual por liçêo; ritmo viral 9:16 com gancho de promessa numérica e CTA de marca.",
+    "angle": "13 anos de negócios comprimidos — resultado vem de princípio, nêo de sorte",
     "pain": "criador trava no faturamento sem saber o que priorizar",
     "emotion": "facts",
     "framework": "Hook-Value-CTA (lista rápida)",
     "hook_variants": [
       "13 anos de negócios em 47 segundos",
       "As 12 lições que separam quem fatura de quem só tenta",
-      "Você não tem problema de produto. Tem problema de prioridade."
+      "Você nêo tem problema de produto. Tem problema de prioridade."
     ]
   },
   "style": {
@@ -45,7 +45,7 @@
       "captions": [ { "t_in": 4.6, "t_out": 9.3, "text": "ancore o preço" } ],
       "gen_prompt": "luxury gold watch with blank featureless dial (no text/logo) on black velvet, warm rim light, macro 100mm, film grain" },
     { "id": "s3", "role": "point", "camera": "tilt-up 35mm", "archetype": "reveal", "motion": ["tilt-up"], "render_kind": "generated_still",
-      "content": { "headline": "02 · Anuncie mais", "narration": "Dois. Anuncie mais. O problema não é o produto. Ninguém sabe que você existe." },
+      "content": { "headline": "02 · Anuncie mais", "narration": "Dois. Anuncie mais. O problema nêo é o produto. Ninguém sabe que você existe." },
       "captions": [ { "t_in": 9.3, "t_out": 14.2, "text": "te falta alcance" } ],
       "gen_prompt": "glowing digital billboard on a night avenue, wet asphalt reflections, bokeh city lights, 35mm, amber glow" },
     { "id": "s4", "role": "point", "camera": "push-in 85mm", "archetype": "offering", "motion": ["push-in"], "render_kind": "generated_still",
@@ -53,7 +53,7 @@
       "captions": [ { "t_in": 14.2, "t_out": 19.03, "text": "tire o atrito" } ],
       "gen_prompt": "open hand offering a small glowing golden light, dark soft background, 85mm, shallow depth of field" },
     { "id": "s5", "role": "point", "camera": "pan-up 50mm", "archetype": "data-rise", "motion": ["pan-up"], "render_kind": "generated_still",
-      "content": { "headline": "04 · Prova > promessa", "narration": "Quatro. Prova, não promessa. Pare de se gabar e mostre resultado real." },
+      "content": { "headline": "04 · Prova > promessa", "narration": "Quatro. Prova, nêo promessa. Pare de se gabar e mostre resultado real." },
       "captions": [ { "t_in": 19.03, "t_out": 23.65, "text": "prova vence promessa" } ],
       "gen_prompt": "rising green growth chart with glass reflection, a finger pointing at real numbers, 50mm, soft studio light" },
     { "id": "s6", "role": "point", "camera": "push-in macro", "archetype": "reveal", "motion": ["push-in"], "render_kind": "generated_still",

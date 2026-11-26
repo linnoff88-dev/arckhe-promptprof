@@ -7,9 +7,9 @@ write() { printf '%s\n' "$2" > "assets/txt/$1.txt"; }
 
 write s1  "Treze anos de negócios resumidos em quarenta e sete segundos. Bora."
 write s2  "Um. Oferta âncora. Um preço absurdo faz todo o resto parecer barato."
-write s3  "Dois. Anuncie mais. O problema não é o produto. Ninguém sabe que você existe."
+write s3  "Dois. Anuncie mais. O problema nêo é o produto. Ninguém sabe que você existe."
 write s4  "Três. Comece de graça. Entregue o primeiro resultado e derrube a barreira."
-write s5  "Quatro. Prova, não promessa. Pare de se gabar e mostre resultado real."
+write s5  "Quatro. Prova, nêo promessa. Pare de se gabar e mostre resultado real."
 write s6  "Cinco. Suba os preços. Cada sim passa a valer muito mais."
 write s7  "Seis. Una vendas e marketing num funil só."
 write s8  "Sete. Fale com seus clientes. Eles já dizem o que querem comprar."

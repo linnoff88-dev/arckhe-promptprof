@@ -1,7 +1,7 @@
-# Base de Conhecimento — Vocabulário de Direção de Arte
+# Base de Conhecimento — Vocabulário de Direçêo de Arte
 
 Este é o "dicionário" que transforma uma frase genérica num prompt profissional.
-São os termos que o KairoBoost injeta. Use como menu: o motor escolhe daqui
+Sêo os termos que o KairoBoost injeta. Use como menu: o motor escolhe daqui
 conforme o preset.
 
 ---
@@ -13,7 +13,7 @@ conforme o preset.
 | `24mm wide` | paisagens, ambientes amplos, arquitetura |
 | `35mm` | reportagem, lifestyle, "olhar humano" |
 | `50mm` | retrato natural, editorial neutro |
-| `85mm` | retrato clássico, compressão, bokeh |
+| `85mm` | retrato clássico, compressêo, bokeh |
 | `100mm macro` | produto, comida, detalhe |
 | `anamórfica` | look de cinema, flares horizontais, bokeh oval |
 | `tilt-shift` | miniatura, onírico |
@@ -52,14 +52,14 @@ conforme o preset.
 
 | Termo | Efeito |
 |---|---|
-| `35mm film grain` | grão fino de cinema |
+| `35mm film grain` | grêo fino de cinema |
 | `heavy grain` | analógico, vintage |
 | `light leaks` | vazamentos de luz retrô |
 | `halation` | brilho ao redor de highlights (filme) |
 | `clean / digital` | nítido, sem ruído (produto/editorial) |
 | `bloom / soft focus` | brilho etéreo, onírico |
 
-## 5. Composição
+## 5. Composiçêo
 
 | Termo | Efeito |
 |---|---|
@@ -68,7 +68,7 @@ conforme o preset.
 | `leading lines` | guia o olhar |
 | `low angle` | poder, imponência |
 | `high angle / top-down` | vulnerabilidade, flat lay |
-| `dutch angle` | tensão, instabilidade |
+| `dutch angle` | tensêo, instabilidade |
 | `negative space` | minimalismo, respiro |
 | `shallow depth of field` | isola o sujeito |
 
@@ -85,15 +85,15 @@ Cada modelo "entende" melhor certos termos. Importante na hora de finalizar:
 
 | Modelo | Dica de prompt |
 |---|---|
-| **Sora 2 / VEO 3.1** (vídeo) | descreva AÇÃO + movimento de câmera + tempo. Frases narrativas funcionam melhor que listas. |
+| **Sora 2 / VEO 3.1** (vídeo) | descreva AÇêO + movimento de câmera + tempo. Frases narrativas funcionam melhor que listas. |
 | **Nano Banana 2 / Seedream** (imagem) | listas de atributos técnicos funcionam bem; ótimo em fotorrealismo e tipografia. |
-| **Kling / Seedance** (vídeo) | curto e direto; foco em 1 ação principal por clipe. |
+| **Kling / Seedance** (vídeo) | curto e direto; foco em 1 açêo principal por clipe. |
 | **Midjourney** | use `--ar 16:9`, `--style raw`, `--stylize`; vírgulas separando conceitos. |
 | **Flux** | linguagem natural descritiva, ótimo com texto e detalhe fino. |
 
 ---
 
 > **Fontes para expandir este vocabulário:**
-> - Glossários de cinematografia / fotografia (lentes, iluminação, color grading)
+> - Glossários de cinematografia / fotografia (lentes, iluminaçêo, color grading)
 > - Docs de cada modelo (cada um publica guia de prompt)
 > - promptingguide.ai (técnica "Generated Knowledge Prompting")
